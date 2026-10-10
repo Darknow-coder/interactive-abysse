@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ABYSSE">
+  <defs>
+    <linearGradient id="abysse-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ae9f7"/>
+      <stop offset="0.3" stop-color="#2288c9"/>
+      <stop offset="0.62" stop-color="#0b3f6c"/>
+      <stop offset="1" stop-color="#02090f"/>
+    </linearGradient>
+    <radialGradient id="abysse-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7ff0e0"/>
+      <stop offset="1" stop-color="#7ff0e0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="15" fill="url(#abysse-sea)"/>
+
+  <path d="M1 13.5c5.2-3.2 10.4 3.2 15.6 0s10.4 3.2 15.6 0 10.4 3.2 15.6 0 10.4 3.2 15.6 0"
+        fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.6"
+        stroke-linecap="round"/>
+
+  <path d="M32 19v25" fill="none" stroke="#7ff0e0" stroke-width="2.6"
+        stroke-linecap="round" opacity="0.9"/>
+
+  <circle cx="32" cy="47" r="9.5" fill="url(#abysse-glow)" opacity="0.65"/>
+  <circle cx="32" cy="47" r="4.2" fill="#7ff0e0"/>
+</svg>

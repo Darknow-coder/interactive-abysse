@@ -1,0 +1,4 @@
+# ABYSSE — site monopage. Tout le contenu est public.
+
+User-agent: *
+Allow: /
