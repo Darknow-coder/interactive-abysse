@@ -26,10 +26,12 @@
     <meta name="color-scheme" content="dark" />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- Logo affiché dans les résultats de recherche Google -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/creatures/meduse.png" />
-    <link rel="mask-icon" href="/favicon.svg" color="#7ff0e0" />
+    <!-- Logo affiché dans les résultats de recherche Google.
+         Chemins RELATIFS : le site fonctionne dans n'importe quel sous-dossier
+         (ex. https://compte.github.io/nom-du-repo/). -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./favicon.svg" />
+    <link rel="mask-icon" href="./favicon.svg" color="#7ff0e0" />
 
     <!-- Aperçu de partage : réseaux sociaux et messageries -->
     <meta property="og:type" content="website" />
@@ -41,8 +43,8 @@
       content="Faites défiler pour descendre à travers les cinq zones de l'océan, jusqu'au point le plus profond de la planète."
     />
     <meta property="og:url" content="https://VOTRE-DOMAINE.fr/" />
-    <meta property="og:image" content="https://VOTRE-DOMAINE.fr/creatures/meduse.png" />
-    <meta property="og:image:alt" content="Méduse bioluminescente dans l'obscurité des profondeurs" />
+    <meta property="og:image" content="https://VOTRE-DOMAINE.fr/favicon.svg" />
+    <meta property="og:image:alt" content="Logo ABYSSE : descente dans la colonne d'eau" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="ABYSSE — Plongée interactive de la surface à 10 935 m" />
@@ -50,7 +52,7 @@
       name="twitter:description"
       content="Faites défiler pour descendre à travers les cinq zones de l'océan, jusqu'au point le plus profond de la planète."
     />
-    <meta name="twitter:image" content="https://VOTRE-DOMAINE.fr/creatures/meduse.png" />
+    <meta name="twitter:image" content="https://VOTRE-DOMAINE.fr/favicon.svg" />
 
     <link rel="canonical" href="https://VOTRE-DOMAINE.fr/" />
 
@@ -100,7 +102,7 @@
             "about": { "@id": "https://VOTRE-DOMAINE.fr/#learningresource" },
             "primaryImageOfPage": {
               "@type": "ImageObject",
-              "url": "https://VOTRE-DOMAINE.fr/creatures/meduse.png"
+              "url": "https://VOTRE-DOMAINE.fr/favicon.svg"
             }
           },
           {
@@ -174,7 +176,73 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Écran de secours : remplacé par React au chargement.
+         Si vous voyez ce message, le JavaScript ne s'est pas exécuté. -->
+    <div id="root">
+      <div
+        style="
+          position: fixed;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          background: #031625;
+          color: #e2edf5;
+          font-family: monospace;
+          text-align: center;
+          padding: 24px;
+        "
+      >
+        <p style="font-size: 13px; letter-spacing: 0.4em; color: #7ff0e0;">ABYSSE</p>
+        <p style="font-size: 13px; opacity: 0.75;">Préparation de la descente…</p>
+      </div>
+    </div>
+    <noscript>
+      <p
+        style="
+          position: fixed;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #031625;
+          color: #e2edf5;
+          font-family: monospace;
+          padding: 24px;
+          text-align: center;
+        "
+      >
+        ABYSSE a besoin de JavaScript pour fonctionner. Activez-le dans votre
+        navigateur, puis rechargez la page.
+      </p>
+    </noscript>
+    <!-- Affiche à l'écran toute erreur bloquante, même sans ouvrir la console. -->
+    <script>
+      (function () {
+        function showError(text) {
+          var banner = document.createElement("div");
+          banner.textContent =
+            "ABYSSE — " + text + " — ouvrez la console (F12) pour plus de détails";
+          banner.style.cssText =
+            "position:fixed;top:0;left:0;right:0;z-index:99999;padding:10px 16px;" +
+            "background:#5b1220;color:#ffd7dd;font:13px/1.5 monospace;";
+          document.body.appendChild(banner);
+        }
+        window.addEventListener("error", function (event) {
+          if (event.target && event.target !== window && (event.target.src || event.target.href)) {
+            showError("Ressource introuvable : " + (event.target.src || event.target.href));
+          } else {
+            showError("Erreur JavaScript : " + (event.message || "inconnue"));
+          }
+        });
+        window.addEventListener("unhandledrejection", function (event) {
+          var reason = event.reason;
+          showError("Erreur : " + (reason && reason.message ? reason.message : reason));
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
